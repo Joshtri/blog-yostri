@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "build-tail": "tailwindcss build -i public/assets/vendor/tailwind.css -o public/assets/style.css",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "prisma:generate": "prisma generate"
+
   },
   "keywords": [],
   "author": "",
