@@ -22,7 +22,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 // app.use(postRoute);
-app.use(mainRoute);
+app.use("/",mainRoute);
 
 // Gunakan router untuk rute produk
 // app.use(productRoute);
