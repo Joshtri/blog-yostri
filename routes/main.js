@@ -6,6 +6,9 @@ const router = express.Router();
 router.get('/', getPost)
 
 
+router.get('/about', (req,res)=>{
+    res.render('about');
+})
 
 // router.get('/read', readBlog);
 // Route to retrieve a post by ID
