@@ -6,8 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "prisma", 
-      "use": "@prisma/cli"
+      "buildCommand": "next build"
     }
   ],
 
