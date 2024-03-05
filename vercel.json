@@ -21,7 +21,7 @@
   "functions": {
     "prisma-generate": {
       "handler": "prisma/generate.handler",
-      "includeFiles": "prisma/**" 
+      "includeFiles": "/prisma/**" 
     }
   }
 }
