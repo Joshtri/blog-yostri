@@ -16,6 +16,10 @@ const app = express();
 // Gunakan middleware Cors
 app.use(cors());
 app.set('view engine', 'ejs')
+app.set('views', [
+   path.join(process.cwd(), 'views'), // Ubah __dirname menjadi process.cwd()
+   // path.join(process.cwd(), 'views',') // Ubah __dirname menjadi process.cwd()
+]);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // Gunakan middleware untuk membaca JSON
