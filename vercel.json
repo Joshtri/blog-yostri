@@ -15,12 +15,5 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ],
-
-  "functions": {
-    "prisma-generate": {
-
-      "includeFiles": "prisma/**" 
-    }
-  }
+  ]
 }
