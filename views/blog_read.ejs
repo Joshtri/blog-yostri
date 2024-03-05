@@ -7,8 +7,7 @@
     <link href="/assets/style.css" rel="stylesheet">
 </head>
 <body>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
+
     <!-- Header start -->
     <%-include('partials/header'); %>
     <!-- Header end -->
@@ -30,7 +29,22 @@
     <!-- Comments section start -->
     <%-include('partials/comment'); %>
     <!-- Comments section end -->
-    
+    <script>
+        // Ambil konten dari post dan simpan dalam variabel JavaScript
+        var content = `<%= post.content %>`;
+        // Panggil fungsi formatText() saat halaman dimuat
+        formatText();
+        
+        // Definisikan fungsi formatText()
+        function formatText() {
+            // Mengonversi tag <b> menjadi elemen bold
+            var formattedContent = content.replace(/\[b\](.*?)\[\/b\]/g, '<b>$1</b>');
+            // Mengonversi karakter baris baru menjadi tag <br>
+            formattedContent = formattedContent.replace(/\n/g, '<br>');
+            // Menampilkan konten yang sudah diformat
+            document.getElementById('formattedContent').innerHTML = formattedContent;
+        }
+    </script>
 
     
     <div class="mt-8">
@@ -40,26 +54,6 @@
     </div>
 
 
-    <script>
-        $(document).ready(function() {
-            // Ambil konten dari post dan simpan dalam variabel JavaScript
-            var content = `<%= post.content %>`;
-            
-            // Definisikan fungsi formatText()
-            function formatText() {
-                // Mengonversi tag <b> menjadi elemen bold
-                var formattedContent = content.replace(/\[b\](.*?)\[\/b\]/g, '<b>$1</b>');
-                // Mengonversi karakter baris baru menjadi tag <br>
-                formattedContent = formattedContent.replace(/\n/g, '<br>');
-                // Membersihkan HTML dan membuat tautan aktif menggunakan DOMPurify
-                formattedContent = DOMPurify.sanitize(formattedContent, { ADD_ATTR: ['target'] });
-                // Menampilkan konten yang sudah diformat
-                $('#formattedContent').html(formattedContent);
-            }
-
-            // Panggil fungsi formatText() saat halaman dimuat
-            formatText();
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

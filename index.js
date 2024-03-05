@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from 'url';
 
+import connectDB from "./config/db.js";
+
 
 // import postRoute from "./routes/post.js";
 import mainRoute from "./routes/main.js";
@@ -11,7 +13,7 @@ import mainRoute from "./routes/main.js";
 
 dotenv.config();
 const app = express();
-
+connectDB();
 
 // Gunakan middleware Cors
 app.use(cors());

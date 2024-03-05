@@ -39,7 +39,7 @@ export const getReadById = async (req, res) => {
         }
 
         // Ubah tag <a> dengan tautan yang sesuai dalam konten post
-        post.content = post.content.replace(/<a href="(.*?)">(.*?)<\/a>/g, '<a href="$1">$2</a>');
+        // post.content = post.content.replace(/<a href="(.*?)">(.*?)<\/a>/g, '<a href="$1">$2</a>');
 
         // Jika post ditemukan, render tampilan 'blog_read' dengan data post yang telah diubah
         res.render('blog_read', { post });
