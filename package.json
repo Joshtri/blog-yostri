@@ -8,8 +8,8 @@
     "build-tail": "tailwindcss build -i public/assets/vendor/tailwind.css -o public/assets/style.css",
     "dev": "nodemon index.js",
     "start" : "node index.js", 
-    "build": "prisma generate && prisma db push",
-    "prisma:generate": "prisma generate"
+    "postinstall": "prisma generate",
+    "build": "prisma generate"
 
   },
   "keywords": [],
