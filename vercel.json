@@ -4,6 +4,10 @@
     {
       "src": "./index.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "prisma", 
+      "use": "@prisma/cli"
     }
   ],
 
@@ -12,5 +16,12 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ]
+  ],
+
+  "functions": {
+    "prisma-generate": {
+      "handler": "prisma/generate.handler",
+      "includeFiles": "prisma/**" 
+    }
+  }
 }
