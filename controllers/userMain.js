@@ -1,43 +1,37 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+// import { PrismaClient } from "@prisma/client";
+import Post from '../models/Posts.js'; // Import model Posts
+
+// const prisma = new PrismaClient();
 
 
 
-export const readBlog = (req,res)=>{
+// Controller untuk membaca blog
+export const readBlog = (req, res) => {
     res.render('blog_read');
 }
 
-
-//get in index.
-// Controller to retrieve posts
+// Controller untuk mendapatkan semua post
 export const getPost = async (req, res) => {
     try {
-        // Fetch all posts from database
-        const posts = await prisma.posts.findMany();
+        // Ambil semua post dari database
+        const posts = await Post.find();
         
-        // Send the posts as JSON response
+        // Kirim post sebagai respons JSON
         // res.status(200).json(posts);
-        res.render('index',{
-            posts
-        })
+        res.render('index', { posts });
     } catch (error) {
-        // Handle errors
+        // Tangani error
         console.error("Error fetching posts:", error);
         res.status(500).json({ error: "Internal server error" });
     }
 };
 
-
-// Controller to retrieve a post by ID
+// Controller untuk mendapatkan post berdasarkan ID
 export const getReadById = async (req, res) => {
     const { id } = req.params; // Dapatkan parameter ID dari URL permintaan
     try {
         // Ambil post dari database berdasarkan ID
-        const post = await prisma.posts.findUnique({
-            where: {
-                id: id // Parse ID menjadi integer karena disimpan sebagai string dalam database
-            }
-        });
+        const post = await Post.findById(id);
 
         if (!post) {
             // Jika post dengan ID yang diberikan tidak ditemukan, kirim respons 404
@@ -47,7 +41,7 @@ export const getReadById = async (req, res) => {
         // Ubah tag <a> dengan tautan yang sesuai dalam konten post
         post.content = post.content.replace(/<a href="(.*?)">(.*?)<\/a>/g, '<a href="$1">$2</a>');
 
-        // Jika post ditemukan, render tampilan 'read' dengan data post yang telah diubah
+        // Jika post ditemukan, render tampilan 'blog_read' dengan data post yang telah diubah
         res.render('blog_read', { post });
     } catch (error) {
         // Tangani error
