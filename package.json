@@ -1,5 +1,5 @@
 {
-  "name": "blog-yostri",
+ "name": "blog-yostri",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "build-tail": "tailwindcss build -i public/assets/vendor/tailwind.css -o public/assets/style.css",
     "dev": "nodemon index.js",
     "start" : "node index.js", 
-    "postinstall": "prisma generate",
+
     "build": "prisma generate"
 
   },
