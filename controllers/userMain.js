@@ -14,7 +14,8 @@ export const readBlog = (req, res) => {
 export const getPost = async (req, res) => {
     try {
         // Ambil semua post dari database
-        const posts = await Post.find();
+        const posts = await Post.find().maxTimeMS(30000); // Timeout 30 detik
+
         
         // Kirim post sebagai respons JSON
         // res.status(200).json(posts);
